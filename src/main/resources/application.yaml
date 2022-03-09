@@ -1,0 +1,22 @@
+spring:
+  liquibase.change-log: classpath:changeLogs/changeLog.xml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: h2
+  datasource:
+    url: jdbc:h2:mem:mydb;MODE=PostgreSQL
+    username: sa
+  h2:
+    console.enabled: true
+---
+spring:
+  config:
+    activate:
+      on-profile: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres

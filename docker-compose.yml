@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:14.1
+    container_name: product_postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - product:/data/postgres
+
+volumes:
+  product:
