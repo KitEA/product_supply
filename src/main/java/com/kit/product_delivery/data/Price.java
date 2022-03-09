@@ -13,8 +13,8 @@ public class Price {
     private Instant endDate;
 
     @ManyToOne
-    @JoinColumn(name="fruit_id")
-    private Product fruit;
+    @JoinColumn(name="product_id")
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name="supply_id")
