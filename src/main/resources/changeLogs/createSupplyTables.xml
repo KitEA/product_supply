@@ -31,10 +31,10 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="startDate" type="date">
+            <column name="start_date" type="date">
                 <constraints nullable="false"/>
             </column>
-            <column name="endDate" type="date">
+            <column name="end_date" type="date">
                 <constraints nullable="false"/>
             </column>
             <column name="price" type="currency">
@@ -45,9 +45,6 @@
             </column>
             <column name="product_id" type="BIGINT">
                 <constraints nullable="false" foreignKeyName="fk_price_product" references="product(id)"/>
-            </column>
-            <column name="supply_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_price_supply" references="supply(id)"/>
             </column>
         </createTable>
         <createTable tableName="supply_price">

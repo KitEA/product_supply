@@ -3,12 +3,13 @@ package com.kit.product_delivery.web;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.util.Date;
 
 @Data
 public class PriceResource {
-    private Instant startDate;
-    private Instant endDate;
+
+    private Date startDate;
+    private Date endDate;
     private BigDecimal price;
     private Integer weight;
     private String productName;
