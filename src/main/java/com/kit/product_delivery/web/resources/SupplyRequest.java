@@ -1,10 +1,10 @@
-package com.kit.product_delivery.web;
+package com.kit.product_delivery.web.resources;
 
-import lombok.Getter;
+import lombok.Value;
 
 import java.util.Set;
 
-@Getter
+@Value
 public class SupplyRequest {
     String supplierName;
     Set<PriceResource> prices;

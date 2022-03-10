@@ -1,4 +1,4 @@
-package com.kit.product_delivery.web;
+package com.kit.product_delivery.web.resources;
 
 import lombok.Data;
 

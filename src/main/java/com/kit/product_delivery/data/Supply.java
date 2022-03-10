@@ -1,8 +1,6 @@
 package com.kit.product_delivery.data;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +9,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Supply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +19,6 @@ public class Supply {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
-    @ManyToMany
-    @JoinTable(
-            name = "supply_price",
-            joinColumns = @JoinColumn(name = "supply_id"),
-            inverseJoinColumns = @JoinColumn(name = "price_id"))
-    List<Price> prices;
+    @OneToMany(mappedBy = "supply")
+    private List<Price> prices;
 }

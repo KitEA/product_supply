@@ -46,13 +46,8 @@
             <column name="product_id" type="BIGINT">
                 <constraints nullable="false" foreignKeyName="fk_price_product" references="product(id)"/>
             </column>
-        </createTable>
-        <createTable tableName="supply_price">
             <column name="supply_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_sp" references="supply(id)"/>
-            </column>
-            <column name="price_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_ps" references="price(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_price_supply" references="supply(id)"/>
             </column>
         </createTable>
     </changeSet>

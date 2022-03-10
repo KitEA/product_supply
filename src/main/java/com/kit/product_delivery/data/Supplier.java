@@ -2,6 +2,7 @@ package com.kit.product_delivery.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
