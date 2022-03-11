@@ -23,14 +23,6 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="supplier_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_price_supplier" references="supplier(id)"/>
-            </column>
-        </createTable>
-        <createTable tableName="price">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true"/>
-            </column>
             <column name="start_date" type="date">
                 <constraints nullable="false"/>
             </column>
@@ -44,10 +36,10 @@
                 <constraints nullable="false"/>
             </column>
             <column name="product_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_price_product" references="product(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_supply_product" references="product(id)"/>
             </column>
-            <column name="supply_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_price_supply" references="supply(id)"/>
+            <column name="supplier_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_supply_supplier" references="supplier(id)"/>
             </column>
         </createTable>
     </changeSet>

@@ -1,33 +1,28 @@
 package com.kit.product_delivery.service;
 
-import com.kit.product_delivery.data.Price;
 import com.kit.product_delivery.data.Product;
 import com.kit.product_delivery.data.Supplier;
 import com.kit.product_delivery.data.Supply;
-import com.kit.product_delivery.data.repository.PriceRepository;
 import com.kit.product_delivery.data.repository.ProductRepository;
 import com.kit.product_delivery.data.repository.SupplierRepository;
 import com.kit.product_delivery.data.repository.SupplyRepository;
-import com.kit.product_delivery.web.resources.PriceResource;
-import com.kit.product_delivery.web.resources.ReportRequest;
-import com.kit.product_delivery.web.resources.ReportResource;
-import com.kit.product_delivery.web.resources.SupplyRequest;
+import com.kit.product_delivery.web.resources.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Collectors.*;
 
 @Service
 @RequiredArgsConstructor
 public class SupplyService {
-    private final PriceRepository priceRepository;
+    private final SupplyRepository supplyRepository;
     private final ProductRepository productRepository;
     private final SupplierRepository supplierRepository;
-    private final SupplyRepository supplyRepository;
 
     @Transactional
     public void registerSupply(SupplyRequest request) {
@@ -35,33 +30,46 @@ public class SupplyService {
                 ? supplierRepository.findByName(request.getSupplierName())
                 : supplierRepository.save(Supplier.builder().name(request.getSupplierName()).build());
 
-        Supply supply = supplyRepository.save(Supply.builder().supplier(supplier).build());
-
-        priceRepository.saveAll(
+        supplyRepository.saveAll(
                 request.getPrices().stream()
-                        .map(priceResource -> convert(priceResource, supply))
+                        .map(priceResource -> convert(priceResource, supplier))
                         .collect(toSet()));
     }
 
-    private Price convert(PriceResource priceResource, Supply supply) {
+    private Supply convert(PriceResource priceResource, Supplier supplier) {
         Product product = productRepository.existsByName(priceResource.getProductName())
                 ? productRepository.findByName(priceResource.getProductName())
                 : productRepository.save(Product.builder().name(priceResource.getProductName()).build());
 
-        return Price.builder()
+        return Supply.builder()
                 .startDate(priceResource.getStartDate())
                 .endDate(priceResource.getEndDate())
                 .product(product)
                 .price(priceResource.getPrice())
                 .weight(priceResource.getWeight())
-                .supply(supply)
+                .supplier(supplier)
                 .build();
     }
 
-    public List<ReportResource> createReport(ReportRequest request) {
-        List<Price> supplies = priceRepository
+    public List<ReportResponse> createReport(ReportRequest request) {
+        List<Supply> supplies = supplyRepository
                 .findAll(request.getStartDate(), request.getEndDate());
 
-        return null;
+        Map<Supplier, List<Supply>> supplierData = supplies.stream().collect(groupingBy(Supply::getSupplier, toList()));
+
+        return supplierData.entrySet().stream().map(supplyEntry -> {
+            Map<Product, List<Supply>> productData = supplyEntry.getValue().stream().collect(groupingBy(Supply::getProduct, toList()));
+            List<ProductResource> productResources = productData.entrySet().stream()
+                    .map(productEntry -> ProductResource.builder()
+                            .weight(productEntry.getValue().stream().mapToInt(Supply::getWeight).sum())
+                            .price(productEntry.getValue().stream().map(Supply::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add))
+                            .name(productEntry.getKey().getName())
+                            .build())
+                    .collect(toList());
+            return ReportResponse.builder()
+                    .supplier(supplyEntry.getKey().getName())
+                    .products(productResources)
+                    .build();
+        }).collect(toList());
     }
 }

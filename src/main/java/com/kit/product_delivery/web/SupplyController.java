@@ -2,7 +2,7 @@ package com.kit.product_delivery.web;
 
 import com.kit.product_delivery.service.SupplyService;
 import com.kit.product_delivery.web.resources.ReportRequest;
-import com.kit.product_delivery.web.resources.ReportResource;
+import com.kit.product_delivery.web.resources.ReportResponse;
 import com.kit.product_delivery.web.resources.SupplyRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +24,7 @@ public class SupplyController {
     }
 
     @PostMapping("/report")
-    public List<ReportResource> createReport(@RequestBody ReportRequest request) {
+    public List<ReportResponse> createReport(@RequestBody ReportRequest request) {
         return supplyService.createReport(request);
     }
 }
