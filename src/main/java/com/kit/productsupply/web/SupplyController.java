@@ -1,9 +1,9 @@
-package com.kit.product_delivery.web;
+package com.kit.productsupply.web;
 
-import com.kit.product_delivery.service.SupplyService;
-import com.kit.product_delivery.web.resources.ReportRequest;
-import com.kit.product_delivery.web.resources.ReportResponse;
-import com.kit.product_delivery.web.resources.SupplyRequest;
+import com.kit.productsupply.service.SupplyService;
+import com.kit.productsupply.web.resources.ReportRequest;
+import com.kit.productsupply.web.resources.ReportResponse;
+import com.kit.productsupply.web.resources.SupplyRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,6 +1,6 @@
-package com.kit.product_delivery.data.repository;
+package com.kit.productsupply.data.repository;
 
-import com.kit.product_delivery.data.Supply;
+import com.kit.productsupply.data.Supply;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

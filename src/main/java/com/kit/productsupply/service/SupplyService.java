@@ -1,12 +1,12 @@
-package com.kit.product_delivery.service;
+package com.kit.productsupply.service;
 
-import com.kit.product_delivery.data.Product;
-import com.kit.product_delivery.data.Supplier;
-import com.kit.product_delivery.data.Supply;
-import com.kit.product_delivery.data.repository.ProductRepository;
-import com.kit.product_delivery.data.repository.SupplierRepository;
-import com.kit.product_delivery.data.repository.SupplyRepository;
-import com.kit.product_delivery.web.resources.*;
+import com.kit.productsupply.data.Product;
+import com.kit.productsupply.data.Supplier;
+import com.kit.productsupply.data.Supply;
+import com.kit.productsupply.data.repository.ProductRepository;
+import com.kit.productsupply.data.repository.SupplierRepository;
+import com.kit.productsupply.data.repository.SupplyRepository;
+import com.kit.productsupply.web.resources.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,13 +1,13 @@
-package com.kit.product_delivery;
+package com.kit.productsupply;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProductDeliveryApplication {
+public class ProductSupplyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductDeliveryApplication.class, args);
+		SpringApplication.run(ProductSupplyApplication.class, args);
 	}
 
 }

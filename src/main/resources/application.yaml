@@ -1,6 +1,8 @@
 spring:
-  liquibase.change-log: classpath:changeLogs/changeLog.xml
-
+  liquibase:
+    change-log: classpath:changeLogs/changeLog.xml
+  profiles:
+    active: postgres
 ---
 spring:
   config:
@@ -10,7 +12,8 @@ spring:
     url: jdbc:h2:mem:mydb;MODE=PostgreSQL
     username: sa
   h2:
-    console.enabled: true
+    console:
+      enabled: true
 ---
 spring:
   config:

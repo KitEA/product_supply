@@ -1,15 +1,15 @@
-package com.kit.product_delivery.service;
+package com.kit.productsupply.service;
 
-import com.kit.product_delivery.data.Product;
-import com.kit.product_delivery.data.Supplier;
-import com.kit.product_delivery.data.Supply;
-import com.kit.product_delivery.data.repository.ProductRepository;
-import com.kit.product_delivery.data.repository.SupplierRepository;
-import com.kit.product_delivery.data.repository.SupplyRepository;
-import com.kit.product_delivery.web.resources.PriceResource;
-import com.kit.product_delivery.web.resources.ReportRequest;
-import com.kit.product_delivery.web.resources.ReportResponse;
-import com.kit.product_delivery.web.resources.SupplyRequest;
+import com.kit.productsupply.data.Product;
+import com.kit.productsupply.data.Supplier;
+import com.kit.productsupply.data.Supply;
+import com.kit.productsupply.data.repository.ProductRepository;
+import com.kit.productsupply.data.repository.SupplierRepository;
+import com.kit.productsupply.data.repository.SupplyRepository;
+import com.kit.productsupply.web.resources.PriceResource;
+import com.kit.productsupply.web.resources.ReportRequest;
+import com.kit.productsupply.web.resources.ReportResponse;
+import com.kit.productsupply.web.resources.SupplyRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

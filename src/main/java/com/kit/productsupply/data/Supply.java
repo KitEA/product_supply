@@ -1,4 +1,4 @@
-package com.kit.product_delivery.data;
+package com.kit.productsupply.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

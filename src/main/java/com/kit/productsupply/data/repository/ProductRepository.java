@@ -1,6 +1,6 @@
-package com.kit.product_delivery.data.repository;
+package com.kit.productsupply.data.repository;
 
-import com.kit.product_delivery.data.Product;
+import com.kit.productsupply.data.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
